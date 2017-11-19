@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
     this.solutionsLists = document.querySelectorAll('.solutions__list');
     this.solutionsMenu = document.querySelector('.header-sub__list');
     this.solutionsItemsMenu = document.querySelectorAll('.header-sub__item');
+    this.headerSubBtn = document.querySelectorAll('.header-sub__btn');
 
     reset_ = () => {
       for(let i = 0; i < this.solutionsLists.length; i++) {
@@ -84,6 +85,7 @@ window.addEventListener('DOMContentLoaded', () => {
           let topWindowPos = window.pageYOffset;
           let solutionsPos = solutions.offsetTop;
           let solutionsHeight = solutions.offsetHeight;
+          // console.log(topWindowPos, solutionsPos, solutionsHeight);
 
           if(topWindowPos >= solutionsPos && topWindowPos < solutionsPos + solutionsHeight / 2) {
             this.headerSub.classList.add('header-sub--open');
@@ -95,9 +97,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
         //  Toggle sliders
         this.solutionsMenu.addEventListener('click', e => {
-          console.log(e.target.parentNode);
+          // console.log(e.target.parentNode);
           reset_();
-          e.stopImmediatePropagation();
+          console.log(e.target);
+          e.target.preventDefault();
+          let activeTab = e.target.getAttribute('href').slice(1);
+          console.log(activeTab);
           for(let i = 0; i < this.solutionsItemsMenu.length; i++) {
             if(e.target.parentNode === this.solutionsItemsMenu[i]) {
               this.solutionsLists[i].classList.add('solutions__list--show');

@@ -21,31 +21,7 @@ $(document).ready(function(){
     ]
   });
 
-  $('.solutions__home').slick({
-    adaptiveHeight: true,
-    arrows: true,
-    prevArrow: $('.solutions__btn--prev'),
-    nextArrow: $('.solutions__btn--next')
-  });
-  $('.solutions__office').slick({
-    adaptiveHeight: true,
-    arrows: true,
-    prevArrow: $('.solutions__btn--prev'),
-    nextArrow: $('.solutions__btn--next')
-  });
-  $('.solutions__horeca').slick({
-    adaptiveHeight: true,
-    arrows: true,
-    prevArrow: $('.solutions__btn--prev'),
-    nextArrow: $('.solutions__btn--next')
-  });
-  $('.solutions__trade').slick({
-    adaptiveHeight: true,
-    arrows: true,
-    prevArrow: $('.solutions__btn--prev'),
-    nextArrow: $('.solutions__btn--next')
-  });
-  $('.solutions__industry').slick({
+  $('.solutions__list').slick({
     adaptiveHeight: true,
     arrows: true,
     prevArrow: $('.solutions__btn--prev'),
