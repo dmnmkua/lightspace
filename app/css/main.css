@@ -1237,7 +1237,7 @@ body {
     left: 0; }
 
 .first-section {
-  background: #000 url(../../img/Ellipse-8.png) bottom center no-repeat;
+  background: #000 url(../img/Ellipse-8.png) bottom center no-repeat;
   background-size: cover;
   position: relative; }
   .first-section:before {
@@ -1377,7 +1377,7 @@ body {
   align-items: center; }
 
 .second-section {
-  background: #000 url(../../img/IMG_0379_1.png) center left no-repeat;
+  background: #000 url(../img/IMG_0379_1.png) center left no-repeat;
   background-size: cover;
   padding: 250px 0 100px;
   display: -webkit-flex;
@@ -1523,17 +1523,20 @@ body {
 
 .section-third__header {
   padding: 30px 45px;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 99;
   background: rgba(0, 0, 0, 0.7); }
+  @media screen and (max-width: 768px) {
+    .section-third__header {
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; } }
 
 .section-third__title {
   color: #fff;
@@ -1599,7 +1602,7 @@ body {
   margin-left: 20px; }
 
 .section-fourth {
-  background: #000 url(../../img/IMG_1606.png) center center no-repeat;
+  background: #000 url(../img/IMG_1606.png) center center no-repeat;
   background-size: cover;
   position: relative;
   color: #fff;
@@ -1712,7 +1715,7 @@ body {
 
 .fifth-section {
   padding: 177px 0 75px;
-  background: #000 url(../../img/IMG_1727.png) center center no-repeat;
+  background: #000 url(../img/IMG_1727.png) center center no-repeat;
   background-size: cover;
   position: relative; }
   @media screen and (max-width: 768px) {
@@ -1809,7 +1812,7 @@ body {
     color: #ffcc00; }
 
 .section-contact {
-  background: url(../../img/background.png) center center no-repeat;
+  background: url(../img/background.png) center center no-repeat;
   background-size: cover; }
 
 .container--contact {
@@ -1828,7 +1831,7 @@ body {
   border-bottom: 2px dotted #ffcc00; }
 
 .section-six {
-  background: #000 url(../../img/003.png) center center no-repeat;
+  background: #000 url(../img/003.png) center center no-repeat;
   background-size: cover;
   padding: 195px 0 70px;
   position: relative;

@@ -2,6 +2,7 @@
 window.addEventListener('DOMContentLoaded', () => {
 
   function OpenMenu() {
+    
     this.btnMenu = document.querySelector('#btn-menu');
     this.nav = document.querySelector('.nav');
     this.navList = document.querySelector('.nav__list');
@@ -53,20 +54,6 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // addCountSlider_ = () => {
-    //   let solutionShowList = document.querySelector('.solutions__list--show');
-    //   let sliderCount = document.querySelector('.slider__count');
-    //
-    //   for(let i = 0; i < solutionShowList.children.length; i++) {
-    //     console.log(solutionShowList.children);
-    //     console.log(solutionShowList.children[i].getAttribute('data-slick-index'));
-    //     if(solutionShowList.children[i].getAttribute('data-slick-index') === 0) {
-    //       sliderCount.innerHTML = `${i} | ${solutionShowList.children.length}`
-    //     }
-    //   }
-    // }
-    //
-    // addCountSlider_();
 
     event_ = () => {
 
@@ -82,7 +69,7 @@ window.addEventListener('DOMContentLoaded', () => {
         this.overlay.classList.remove('overlay--show');
       });
 
-      //  Remove button
+      //  Remove value button
       this.callBackForm.addEventListener('click', e => {
         if(e.target.tagName === 'I') {
           e.target.previousElementSibling.value = '';
@@ -90,37 +77,49 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      //  Add placeholder
-      // for(let i = 0; i < this.callbackInput.length; i++) {
-      //   this.callbackInput[i].addEventListener('blur', e => {
-      //     let t = this.callbackInput[i].value;
-      //     this.callbackInput[i].value = t;
-      //     if(e.target.value !== "") {
-      //       this.callbackPlaceholder[i].classList.add('callback__placeholder--value');
-      //     }
-      //     if(e.target.value === "" || e.target.value === "+7 (___) ___-____") {
-      //       this.callbackPlaceholder[i].classList.remove('callback__placeholder--value');
-      //     }
-      //   });
-      // }
+      //  Open sub-menu
+      window.addEventListener('scroll', () => {
+        let topWindowPos = window.pageYOffset;
+        let solutionsPos = solutions.offsetTop;
+        let solutionsHeight = solutions.offsetHeight;
+        // console.log(topWindowPos, solutionsPos, solutionsHeight);
 
-        //  Open sub-menu
-        window.addEventListener('scroll', () => {
-          let topWindowPos = window.pageYOffset;
-          let solutionsPos = solutions.offsetTop;
-          let solutionsHeight = solutions.offsetHeight;
-          // console.log(topWindowPos, solutionsPos, solutionsHeight);
+        if(topWindowPos >= solutionsPos && topWindowPos < solutionsPos + solutionsHeight / 2) {
+          this.headerSub.classList.add('header-sub--open');
+        }
+        else {
+          this.headerSub.classList.remove('header-sub--open');
+        }
+      });
 
-          if(topWindowPos >= solutionsPos && topWindowPos < solutionsPos + solutionsHeight / 2) {
-            this.headerSub.classList.add('header-sub--open');
-          }
-          else {
-            this.headerSub.classList.remove('header-sub--open');
-          }
+      //  Toggle sliders
+      this.solutionsMenu.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        reset_();
+
+        let activeTab = e.target.getAttribute('href');
+        let activeList = document.querySelector(activeTab);
+        activeList.classList.add('solution__list-wrap--show');
+        $(activeTab + " > ul").slick({
+          adaptiveHeight: true,
+          arrows: true,
+          prevArrow: $('.solutions__btn--prev'),
+          nextArrow: $('.solutions__btn--next')
         });
+        e.target.classList.add('header-sub__btn--active');
+      });
 
-        //  Toggle sliders
-        this.solutionsMenu.addEventListener('click', e => {
+      //  Mobile menu slider open
+      this.mobileMenuBtn.addEventListener('click', e => {
+        e.stopImmediatePropagation();
+        this.mobileMenu.classList.toggle('header-sub__list--mobile-show');
+      });
+
+      //  select mobile menu item
+      this.mobileMenu.addEventListener('click', e => {
+        if(e.target.tagName === "A") {
           e.preventDefault();
           e.stopImmediatePropagation();
 
@@ -129,6 +128,9 @@ window.addEventListener('DOMContentLoaded', () => {
           let activeTab = e.target.getAttribute('href');
           let activeList = document.querySelector(activeTab);
           activeList.classList.add('solution__list-wrap--show');
+          e.target.classList.add('header-sub__btn--mobile-active');
+          this.mobileMenu.classList.toggle('header-sub__list--mobile-show');
+          viewMenuItem_();
           $(activeTab + " > ul").slick({
             adaptiveHeight: true,
             arrows: true,
@@ -136,39 +138,8 @@ window.addEventListener('DOMContentLoaded', () => {
             nextArrow: $('.solutions__btn--next')
           });
           e.target.classList.add('header-sub__btn--active');
-        });
-
-        //  Mobile menu slider open
-        this.mobileMenuBtn.addEventListener('click', e => {
-          e.stopImmediatePropagation();
-          this.mobileMenu.classList.toggle('header-sub__list--mobile-show');
-        });
-
-        //  select mobile menu item
-        this.mobileMenu.addEventListener('click', e => {
-          if(e.target.tagName === "A") {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-
-            reset_();
-
-            let activeTab = e.target.getAttribute('href');
-            let activeList = document.querySelector(activeTab);
-            activeList.classList.add('solution__list-wrap--show');
-            e.target.classList.add('header-sub__btn--mobile-active');
-            this.mobileMenu.classList.toggle('header-sub__list--mobile-show');
-            viewMenuItem_();
-            $(activeTab + " > ul").slick({
-              adaptiveHeight: true,
-              arrows: true,
-              prevArrow: $('.solutions__btn--prev'),
-              nextArrow: $('.solutions__btn--next')
-            });
-            e.target.classList.add('header-sub__btn--active');
-          }
-        });
-
-        // count gallery slide
+        }
+      });
     }
 
     init_ = () => {
@@ -180,6 +151,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let openMenu = new OpenMenu();
 
+  //  Smooth Scroll
   $(".nav__link, .logo-block__link").click(function() {
     openMenu.nav.classList.remove('nav--open');
     openMenu.overlay.classList.remove('overlay--show');

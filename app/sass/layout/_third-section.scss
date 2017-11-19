@@ -82,17 +82,21 @@
 
 .section-third__header {
   padding: 30px 45px;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 99;
   background: rgba(0, 0, 0, .7);
+
+  @media screen and (max-width: $mobile) {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .section-third__title {
