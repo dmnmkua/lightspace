@@ -189,17 +189,44 @@
   <!-- section third -->
   <div class="section-third" id="solutions">
 
+    <div class="section-third__header">
+      <div class="section-third__title">Решения</div>
+      <div class="section-third__solution-wrap">
+        <div class="section-third__solution"></div>
+        <img src="./img/Shape_590.png" alt="" class="section-third__img">
+      </div>
+    </div>
+
+    <ul class="header-sub__list--mobile">
+      <li class="header-sub__item--mobile">
+        <a href="#home" class="header-sub__btn--mobile header-sub__btn--mobile-active" role="button">Для дома</a>
+      </li>
+      <li class="header-sub__item--mobile">
+        <a href="#office" class="header-sub__btn--mobile" role="button">Для офиса</a>
+      </li>
+      <li class="header-sub__item--mobile">
+        <a href="#horeca" class="header-sub__btn--mobile" role="button">Ногеса</a>
+      </li>
+      <li class="header-sub__item--mobile">
+        <a href="#trade" class="header-sub__btn--mobile" role="button">Торговое</a>
+      </li>
+      <li class="header-sub__item--mobile">
+        <a href="#industry" class="header-sub__btn--mobile" role="button">Промышленное</a>
+      </li>
+    </ul>
+
+
     <div class="solutions__btn solutions__btn--prev">
-      <img src="./img/Shape 590.png" alt="arrow previous" class="solutions__btn-img solutions__btn-img--prev">
+      <img src="./img/Shape590.png" alt="arrow previous" class="solutions__btn-img solutions__btn-img--prev">
     </div>
     <div class="solutions__btn solutions__btn--next">
-      <img src="./img/Shape 590.png" alt="arrow next" class="solutions__btn-img solutions__btn-img--next">
+      <img src="./img/Shape590.png" alt="arrow next" class="solutions__btn-img solutions__btn-img--next">
     </div>
 
     <div class="solutions">
 
       <!-- home -->
-      <div id="home">
+      <div id="home" class="solution__list-wrap solution__list-wrap--show">
         <ul class="solutions__list solutions__home solutions__list--show">
           <li class="solutions__item">
             <img src="./img/photo/1_home/1_home_anna-min.jpg" alt="" class="solutions__img">
@@ -241,7 +268,7 @@
       </div> <!-- ./home -->
 
       <!-- office -->
-      <div id="office">
+      <div id="office" class="solution__list-wrap">
         <ul class="solutions__list solutions__office">
           <li class="solutions__item">
             <img src="./img/photo/2_office/2_office_google_1-min.jpg" alt="" class="solutions__img">
@@ -292,7 +319,7 @@
       </div> <!-- ./office -->
 
       <!-- horeca -->
-      <div id="horeca">
+      <div id="horeca" class="solution__list-wrap">
         <ul class="solutions__list solutions__horeca">
           <li class="solutions__item">
             <img src="./img/photo/3_horeca/3_horeca_bageteriya_1-min.jpg" alt="" class="solutions__img">
@@ -358,7 +385,7 @@
       </div> <!-- ./horeca -->
 
       <!-- trade -->
-      <div id="trade">
+      <div id="trade" class="solution__list-wrap">
         <ul class="solutions__list solutions__trade">
           <li class="solutions__item">
             <img src="./img/photo/4_torgovoe/4_torgovoe_almaata_1-min.jpg" alt="" class="solutions__img">
@@ -388,7 +415,7 @@
       </div> <!-- ./trade -->
 
       <!-- industry -->
-      <div id="industry">
+      <div id="industry" class="solution__list-wrap">
         <ul class="solutions__list solutions__industry">
           <li class="solutions__item">
             <img src="./img/photo/5_promishlennoe/5_promyshlennoe_horeca_ibis_stupino_2-min.jpg" alt="" class="solutions__img">
@@ -454,7 +481,7 @@
 
     <div class="slider__descr">
       <div class="slider__location">Hotel</div>
-      <div class="slider__count">1 | 5</div>
+      <div class="slider__count"></div>
     </div>
 
   </div> <!-- ./section third -->
@@ -646,14 +673,14 @@
         <!-- callback form -->
         <form action="" class="callback__form">
           <div class="callback__phone-wrap">
-            <input type="tel" class="callback__phone callback__input">
+            <input type="tel" class="callback__phone callback__input" placeholder="Введите номер телефона">
             <i class="material-icons callback__close-icon">close</i>
-            <span class="callback__placeholder">Введите номер телефона</span>
+            <!-- <span class="callback__placeholder">Введите номер телефона</span> -->
           </div>
           <div class="callback__email-wrap">
-            <input type="email" class="callback__email callback__input">
+            <input type="email" class="callback__email callback__input" placeholder="Введите адрес электронной почты">
             <i class="material-icons callback__close-icon">close</i>
-            <span class="callback__placeholder">Введите адрес электронной почты</span>
+            <!-- <span class="callback__placeholder">Введите адрес электронной почты</span> -->
           </div>
           <button class="callback__btn" type="submit">Отправлено</button>
         </form> <!-- ./callback form -->

@@ -62,6 +62,16 @@
 .callback__img {
   margin: 15px 0 60px;
   background-image: radial-gradient(rgba(255, 204, 0, .3) 0%, transparent 90%);
+  position: relative;
+
+  &:before {
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    top: 0;
+    left: 0;
+    background: radial-gradient(rgba(255, 204, 0, .9) 0%, transparent 90%);
+  }
 }
 
 .callback__form {
@@ -136,6 +146,7 @@
     font-size: .5rem;
   }
 }
+
 
 .callback__input:focus ~ .callback__placeholder {
   position: absolute;

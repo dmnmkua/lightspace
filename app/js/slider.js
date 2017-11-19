@@ -20,11 +20,4 @@ $(document).ready(function(){
       }
     ]
   });
-
-  $('.solutions__list').slick({
-    adaptiveHeight: true,
-    arrows: true,
-    prevArrow: $('.solutions__btn--prev'),
-    nextArrow: $('.solutions__btn--next')
-  });
 });

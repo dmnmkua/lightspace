@@ -146,6 +146,10 @@
   transform: rotateX(-90deg);
   transform-origin: top;
   will-change: font-size, height, opacity, transform;
+
+  @media screen and (max-width: $mobile) {
+    display: none;
+  }
 }
 
 .header-sub--open {
@@ -191,6 +195,7 @@
   cursor: pointer;
   transition: .3s;
   will-change: color;
+  text-decoration: none;
 
   &:hover,
   &:active {

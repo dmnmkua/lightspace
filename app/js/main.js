@@ -15,25 +15,58 @@ window.addEventListener('DOMContentLoaded', () => {
     this.solutionsMenu = document.querySelector('.header-sub__list');
     this.solutionsItemsMenu = document.querySelectorAll('.header-sub__item');
     this.headerSubBtn = document.querySelectorAll('.header-sub__btn');
+    this.listWrap = document.querySelectorAll('.solution__list-wrap');
+    this.solutionMobileMenu = document.querySelector('.section-third__solution');
+    this.subBtnMobile = document.querySelectorAll('.header-sub__btn--mobile');
+    this.mobileMenuBtn =
+      document.querySelector('.section-third__solution-wrap');
+    this.mobileMenu = document.querySelector('.header-sub__list--mobile');
+
+    viewManuItem_ = () => {
+      for(let i =0; i < this.subBtnMobile.length; i++) {
+        if(this.subBtnMobile[i].classList.contains('header-sub__btn--mobile-active')) {
+          this.solutionMobileMenu.innerHTML = this.subBtnMobile[i].innerHTML;
+        }
+      }
+    }
+
+    viewManuItem_();
+
+    $('#home > ul').slick ({
+      adaptiveHeight: true,
+      arrows: true,
+      prevArrow: $('.solutions__btn--prev'),
+      nextArrow: $('.solutions__btn--next')
+    })
 
     reset_ = () => {
-      for(let i = 0; i < this.solutionsLists.length; i++) {
-        if(this.solutionsLists[i].classList.contains('solutions__list--show')) {
-          this.solutionsLists[i].classList.remove('solutions__list--show');
+      for(let i = 0; i < this.listWrap.length; i++) {
+        if(this.listWrap[i].classList.contains('solution__list-wrap--show')) {
+          this.listWrap[i].classList.remove('solution__list-wrap--show');
         }
         if(this.solutionsItemsMenu[i].children[0].classList.contains('header-sub__btn--active')) {
           this.solutionsItemsMenu[i].children[0].classList.remove('header-sub__btn--active')
+        }
+        if(this.subBtnMobile[i].classList.contains('header-sub__btn--mobile-active')) {
+          this.subBtnMobile[i].classList.remove('header-sub__btn--mobile-active')
         }
       }
     }
 
     addCountSlider_ = () => {
       let solutionShowList = document.querySelector('.solutions__list--show');
-      for(let i = 0; i < solutionShowList.children.length; i++)
-      this.location = document.createElement('div');
-      this.location.classList.add('slider__count');
-      this.textLocation = document.createTextNode(`${solutionShowList}`);
+      let sliderCount = document.querySelector('.slider__count');
+
+      for(let i = 0; i < solutionShowList.children.length; i++) {
+        console.log(solutionShowList.children);
+        console.log(solutionShowList.children[i].getAttribute('data-slick-index'));
+        if(solutionShowList.children[i].getAttribute('data-slick-index') === 0) {
+          sliderCount.innerHTML = `${i} | ${solutionShowList.children.length}`
+        }
+      }
     }
+
+    addCountSlider_();
 
     event_ = () => {
 
@@ -70,16 +103,6 @@ window.addEventListener('DOMContentLoaded', () => {
           }
         });
 
-        // this.formSubmit.addEventListener('click', () => {
-        //   let xhr = new XMLHttpRequest();
-        //   xhr.open('POST', 'form.json');
-        //   xhr.responseType = 'json';
-        //   xhr.addEventListener('load', () => {
-        //
-        //   })
-        //   xhr.send();
-        // })
-
         //  Open sub-menu
         window.addEventListener('scroll', () => {
           let topWindowPos = window.pageYOffset;
@@ -97,19 +120,56 @@ window.addEventListener('DOMContentLoaded', () => {
 
         //  Toggle sliders
         this.solutionsMenu.addEventListener('click', e => {
-          // console.log(e.target.parentNode);
+          e.preventDefault();
+          e.stopImmediatePropagation();
+
           reset_();
-          console.log(e.target);
-          e.target.preventDefault();
-          let activeTab = e.target.getAttribute('href').slice(1);
-          console.log(activeTab);
-          for(let i = 0; i < this.solutionsItemsMenu.length; i++) {
-            if(e.target.parentNode === this.solutionsItemsMenu[i]) {
-              this.solutionsLists[i].classList.add('solutions__list--show');
-              e.target.classList.add('header-sub__btn--active');
-            }
+
+          let activeTab = e.target.getAttribute('href');
+          let activeList = document.querySelector(activeTab);
+          activeList.classList.add('solution__list-wrap--show');
+          $(activeTab + " > ul").slick({
+            adaptiveHeight: true,
+            arrows: true,
+            prevArrow: $('.solutions__btn--prev'),
+            nextArrow: $('.solutions__btn--next')
+          });
+          e.target.classList.add('header-sub__btn--active');
+        });
+
+        //  Mobile menu slider open
+        this.mobileMenuBtn.addEventListener('click', e => {
+          e.stopImmediatePropagation();
+          this.mobileMenu.classList.toggle('header-sub__list--mobile-show');
+        });
+
+        //  select mobile menu item
+        this.mobileMenu.addEventListener('click', e => {
+          if(e.target.tagName === "A") {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            reset_();
+
+            let activeTab = e.target.getAttribute('href');
+            let activeList = document.querySelector(activeTab);
+            activeList.classList.add('solution__list-wrap--show');
+            e.target.classList.add('header-sub__btn--mobile-active');
+            this.mobileMenu.classList.toggle('header-sub__list--mobile-show');
+            viewManuItem_();
+            $(activeTab + " > ul").slick({
+              adaptiveHeight: true,
+              arrows: true,
+              prevArrow: $('.solutions__btn--prev'),
+              nextArrow: $('.solutions__btn--next')
+            });
+            e.target.classList.add('header-sub__btn--active');
           }
         });
+
+        // count gallery slide
+
+
       }
     }
 
@@ -122,7 +182,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let openMenu = new OpenMenu();
 
-  $("a").click(function() {
+  $(".nav__link, .logo-block__link").click(function() {
     openMenu.nav.classList.remove('nav--open');
     openMenu.overlay.classList.remove('overlay--show');
      $("html, body").animate({
@@ -133,8 +193,4 @@ window.addEventListener('DOMContentLoaded', () => {
      });
      return false;
   });
-
-
-
-
 })
