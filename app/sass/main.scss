@@ -1,0 +1,53 @@
+//  Google icons
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+//  Open Sans Google fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+//  DINPro
+@import "../fonts/din-pro/DINPro.scss";
+
+//  SLICK
+@import "../libs/slick/slick.scss";
+@import "../libs/slick/slick-theme.scss";
+
+// Normalize
+@import "../libs/normalize/normalize";
+
+// Magnific popup
+@import "../libs/magnific-popup/dist/magnific-popup";
+
+
+
+@import "./adjustment.scss";
+
+@import "./vars.scss";
+
+//  LAYOUT
+
+//  HEADER
+@import "./layout/header.scss";
+
+//  FIRST SECTION
+@import "./layout/first-section.scss";
+
+//  SECOND SECTION
+@import "./layout/second-section.scss";
+
+//  THIRD SECTION
+@import "./layout/third-section.scss";
+
+//  FOURTH SECTION
+@import "./layout/fourth-section.scss";
+
+//  FIFTH SECTION
+@import "./layout/fifth-section.scss";
+
+//   CONTACT SECTION
+@import "./layout/contact-section.scss";
+
+//  SIX SECTION
+@import "./layout/six-section.scss";
+
+//  SEVEN SECTION
+@import "./layout/seven-section.scss";

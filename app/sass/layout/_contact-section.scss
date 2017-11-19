@@ -1,0 +1,22 @@
+.section-contact {
+  background: url(../../img/background.png) center center no-repeat;
+  background-size: cover;
+}
+
+.container--contact {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.contact-text {
+  color: #fff;
+  font-size: .953rem;
+  font-family: "DINPro Medium";
+}
+
+.contact-link {
+  color: $main-color;
+  text-decoration: none;
+  padding-bottom: 5px;
+  border-bottom: 2px dotted $main-color;
+}
