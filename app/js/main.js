@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.section-third__solution-wrap');
     this.mobileMenu = document.querySelector('.header-sub__list--mobile');
 
-    viewManuItem_ = () => {
+    viewMenuItem_ = () => {
       for(let i =0; i < this.subBtnMobile.length; i++) {
         if(this.subBtnMobile[i].classList.contains('header-sub__btn--mobile-active')) {
           this.solutionMobileMenu.innerHTML = this.subBtnMobile[i].innerHTML;
@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    viewManuItem_();
+    viewMenuItem_();
 
     $('#home > ul').slick ({
       adaptiveHeight: true,
@@ -53,20 +53,20 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    addCountSlider_ = () => {
-      let solutionShowList = document.querySelector('.solutions__list--show');
-      let sliderCount = document.querySelector('.slider__count');
-
-      for(let i = 0; i < solutionShowList.children.length; i++) {
-        console.log(solutionShowList.children);
-        console.log(solutionShowList.children[i].getAttribute('data-slick-index'));
-        if(solutionShowList.children[i].getAttribute('data-slick-index') === 0) {
-          sliderCount.innerHTML = `${i} | ${solutionShowList.children.length}`
-        }
-      }
-    }
-
-    addCountSlider_();
+    // addCountSlider_ = () => {
+    //   let solutionShowList = document.querySelector('.solutions__list--show');
+    //   let sliderCount = document.querySelector('.slider__count');
+    //
+    //   for(let i = 0; i < solutionShowList.children.length; i++) {
+    //     console.log(solutionShowList.children);
+    //     console.log(solutionShowList.children[i].getAttribute('data-slick-index'));
+    //     if(solutionShowList.children[i].getAttribute('data-slick-index') === 0) {
+    //       sliderCount.innerHTML = `${i} | ${solutionShowList.children.length}`
+    //     }
+    //   }
+    // }
+    //
+    // addCountSlider_();
 
     event_ = () => {
 
@@ -91,17 +91,18 @@ window.addEventListener('DOMContentLoaded', () => {
       });
 
       //  Add placeholder
-      for(let i = 0; i < this.callbackInput.length; i++) {
-        this.callbackInput[i].addEventListener('blur', e => {
-          let t = this.callbackInput[i].value;
-          this.callbackInput[i].value = t;
-          if(e.target.value !== "") {
-            this.callbackPlaceholder[i].classList.add('callback__placeholder--value');
-          }
-          if(e.target.value === "" || e.target.value === "+7 (___) ___-____") {
-            this.callbackPlaceholder[i].classList.remove('callback__placeholder--value');
-          }
-        });
+      // for(let i = 0; i < this.callbackInput.length; i++) {
+      //   this.callbackInput[i].addEventListener('blur', e => {
+      //     let t = this.callbackInput[i].value;
+      //     this.callbackInput[i].value = t;
+      //     if(e.target.value !== "") {
+      //       this.callbackPlaceholder[i].classList.add('callback__placeholder--value');
+      //     }
+      //     if(e.target.value === "" || e.target.value === "+7 (___) ___-____") {
+      //       this.callbackPlaceholder[i].classList.remove('callback__placeholder--value');
+      //     }
+      //   });
+      // }
 
         //  Open sub-menu
         window.addEventListener('scroll', () => {
@@ -156,7 +157,7 @@ window.addEventListener('DOMContentLoaded', () => {
             activeList.classList.add('solution__list-wrap--show');
             e.target.classList.add('header-sub__btn--mobile-active');
             this.mobileMenu.classList.toggle('header-sub__list--mobile-show');
-            viewManuItem_();
+            viewMenuItem_();
             $(activeTab + " > ul").slick({
               adaptiveHeight: true,
               arrows: true,
@@ -168,9 +169,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         // count gallery slide
-
-
-      }
     }
 
     init_ = () => {
