@@ -1,5 +1,6 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
   body {
@@ -10,4 +11,32 @@
   max-width: 1030px;
   padding: 0 25px;
   margin: 0 auto;
+}
+
+.shadow-wrap {
+  position: relative;
+}
+
+.shadow {
+  position: absolute;
+  top: -33px;
+  left: -33px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(rgba(255, 204, 0, .4) 0%, transparent 70%);
+  opacity: .5;
+  -webkit-transition: .3s;
+  transition: .3s;
+
+  @media screen and (max-width: $mobile) {
+    left: -33px;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.shadow--callback {
+  top: -19px;
 }

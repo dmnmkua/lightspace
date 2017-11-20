@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>template</title>
 
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.min.css">
 </head>
 <body>
 
@@ -205,13 +205,13 @@
         <a href="#office" data-tab=".office" class="header-sub__btn--mobile" role="button">Для офиса</a>
       </li>
       <li class="header-sub__item--mobile">
-        <a href="#horeca" class="header-sub__btn--mobile" role="button">Ногеса</a>
+        <a href="#horeca" data-tab=".horeca" class="header-sub__btn--mobile" role="button">Ногеса</a>
       </li>
       <li class="header-sub__item--mobile">
-        <a href="#trade" class="header-sub__btn--mobile" role="button">Торговое</a>
+        <a href="#trade" data-tab=".trade" class="header-sub__btn--mobile" role="button">Торговое</a>
       </li>
       <li class="header-sub__item--mobile">
-        <a href="#industry" class="header-sub__btn--mobile" role="button">Промышленное</a>
+        <a href="#industry" data-tab=".prom" class="header-sub__btn--mobile" role="button">Промышленное</a>
       </li>
     </ul>
 
@@ -225,7 +225,7 @@
 
     <div class="solutions">
 
-      <!-- home -->
+      <!-- slider item -->
       <div id="home" class="solution__list-wrap solution__list-wrap--show">
         <ul class="solutions__list solutions__home solutions__list--show">
           <li class="solutions__item home">
@@ -451,11 +451,10 @@
             <img src="./img/photo/5_promishlennoe/5_promyshlennoe_ibis_krasnoyarsk_1-min.jpg" alt="" class="solutions__img">
           </li>
         </ul>
-      </div> <!-- ./home -->
+      </div> <!-- slider item -->
     </div>
 
-    <div class="slider__descr">
-      <div class="slider__location">Hotel</div>
+    <div class="slider__descr-wrap">
       <div class="slider__count"></div>
     </div>
 
@@ -471,32 +470,50 @@
         <p class="stages__sub-title">От идеи до ее реализации</p>
         <ul class="stages__list">
           <li class="stages__item">
-            <img src="./img/file.png" alt="file" class="stages__img">
+            <div class="shadow-wrap">
+              <img src="./img/file.png" alt="file" class="stages__img">
+              <div class="shadow"></div>
+            </div>
             <h4 class="stages__name">Заявка</h4>
             <p class="stages__descr">Отправьте нам заявку на электронную почту или позвоните по телефону</p>
           </li>
           <li class="stages__item">
-            <img src="./img/ruble.png" alt="ruble" class="stages__img">
+            <div class="shadow-wrap">
+              <img src="./img/ruble.png" alt="ruble" class="stages__img">
+              <div class="shadow"></div>
+            </div>
             <h4 class="stages__name">Оценка</h4>
             <p class="stages__descr">Наш менеджер перезвонит вам обсудить детали и сделать предварительную оценку проекта</p>
           </li>
           <li class="stages__item">
-            <img src="./img/settings.png" alt="settings" class="stages__img">
+            <div class="shadow-wrap">
+              <img src="./img/settings.png" alt="settings" class="stages__img">
+              <div class="shadow"></div>
+            </div>
             <h4 class="stages__name">Разработка</h4>
             <p class="stages__descr">Составляем смету и разрабатываем светотехнический проект (создаем 3D модель)</p>
           </li>
           <li class="stages__item">
-            <img src="./img/idea.png" alt="idea" class="stages__img">
+            <div class="shadow-wrap">
+              <div class="shadow"></div>
+              <img src="./img/idea.png" alt="idea" class="stages__img">
+            </div>
             <h4 class="stages__name">Подбор освещения</h4>
             <p class="stages__descr">Подбираем оптимальные осветительные приборы и комплектующие</p>
           </li>
           <li class="stages__item">
-            <img src="./img/shipped.png" alt="shipped" class="stages__img">
+            <div class="shadow-wrap">
+              <img src="./img/shipped.png" alt="shipped" class="stages__img">
+              <div class="shadow"></div>
+            </div>
             <h4 class="stages__name">Доставка</h4>
             <p class="stages__descr">Делаем заказ у производителей и контролируем процесс доставки</p>
           </li>
           <li class="stages__item">
-            <img src="./img/development.png" alt="development" class="stages__img">
+            <div class="shadow-wrap">
+              <div class="shadow"></div>
+              <img src="./img/development.png" alt="development" class="stages__img">
+            </div>
             <h4 class="stages__name">Монтаж и запуск</h4>
             <p class="stages__descr">Устанавливаем световые изделия и делаем проверку системы оповещения</p>
           </li>
@@ -643,19 +660,22 @@
       <div class="callback-wrap">
         <h3 class="callback__title">Обратный звонок</h3>
         <p class="callback__sub-title">Мы Вам перезвоним</p>
-        <img src="./img/smartphone.png" alt="phone" class="callback__img">
+        <div class="shadow-wrap">
+          <img src="./img/smartphone.png" alt="phone" class="callback__img">
+          <div class="shadow shadow--callback"></div>
+        </div>
 
         <!-- callback form -->
-        <form action="./send.php" class="callback__form" id="ajaxform" method="post">
+        <form action="" class="callback__form" id="ajaxform" method="post">
           <div class="callback__phone-wrap">
-            <input type="tel" class="callback__phone callback__input" placeholder="Введите номер телефона" name="phone" id="phone">
+            <input type="tel" class="callback__phone callback__input" placeholder="Введите номер телефона" name="phone" id="phone" required>
             <i class="material-icons callback__close-icon">close</i>
           </div>
           <div class="callback__email-wrap">
-            <input type="email" class="callback__email callback__input" placeholder="Введите адрес электронной почты" name="email" id="email">
+            <input type="email" class="callback__email callback__input" placeholder="Введите адрес электронной почты" name="email" id="email" required>
             <i class="material-icons callback__close-icon">close</i>
           </div>
-          <button class="callback__btn" type="submit" id="button">Отправлено</button>
+          <button class="callback__btn" type="submit" id="button">Отправить</button>
         </form> <!-- ./callback form -->
       </div> <!-- ./callback block -->
 
@@ -676,20 +696,29 @@
         <h3 class="address__title">Контакты</h3>
         <ul class="address__list">
           <li class="address__item">
-            <img src="./img/address.png" alt="address" class="address__item-img">
+            <div class="shadow-wrap">
+              <div class="shadow"></div>
+              <img src="./img/address.png" alt="address" class="address__item-img">
+            </div>
             <h4 class="address__item-title">Адрес:</h4>
             <p class="address__item-descr">г. Москва, <br>Нижняя Сыромятническая д.10 стр.2, <br>9 этаж, офис №2</p>
             <h4 class="address__item-title">Часы работы</h4>
             <p class="address__item-descr">с 10:00 до 20:00</p>
           </li>
           <li class="address__item">
-            <img src="./img/smartphone (1).png" alt="phone" class="address__item-img">
+            <div class="shadow-wrap">
+              <img src="./img/smartphone (1).png" alt="phone" class="address__item-img">
+              <div class="shadow"></div>
+            </div>
             <h4 class="address__item-title"><a href="tel:+74997695117" class="address__item-tel-link">+7 (499) 769-51-17</a></h4>
             <h4 class="address__item-title">Факс:</h4>
             <p class="address__item-descr">+7 (499) 769-51-17</p>
           </li>
           <li class="address__item">
-            <img src="./img/email.png" alt="email" class="address__item-img">
+            <div class="shadow-wrap">
+              <img src="./img/email.png" alt="email" class="address__item-img">
+              <div class="shadow"></div>
+            </div>
             <h4 class="address__item-title">Email:</h4>
             <p class="address__item-descr">
               <a href="mailto:light-space@yandex.ru" class="address__item-link">light-space@yandex.ru</a>
@@ -701,12 +730,18 @@
         <ul class="address__list-soc">
           <li class="address__item-soc">
             <a href="#" class="address__link-soc">
-              <img src="./img/Layer 28.png" alt="instagram" class="address__img-soc">
+              <div class="shadow-wrap">
+                <img src="./img/Layer 28.png" alt="instagram" class="address__img-soc">
+                <div class="shadow"></div>
+              </div>
             </a>
           </li>
           <li class="address__item-soc">
             <a href="#" class="address__link-soc">
-              <img src="./img/Ellipse 3.png" alt="facebook" class="address__img-soc">
+              <div class="shadow-wrap">
+                <img src="./img/Ellipse 3.png" alt="facebook" class="address__img-soc">
+                <div class="shadow"></div>
+              </div>
             </a>
           </li>
         </ul> <!-- ./social list -->
@@ -738,15 +773,16 @@
   </div> <!-- ./seven section -->
 
 
-  <script src="./js/libs.min.js" charset="utf-8"></script>
-  <script src="./libs/mask/jquery.maskedinput.js" charset="utf-8"></script>
-  <script src="./js/mask.js" charset="utf-8"></script>
-  <script src="./libs/slick/slick.min.js" charset="utf-8"></script>
-  <script src="./js/slider.js" charset="utf-8"></script>
-  <script src="./js/form.js" charset="utf-8"></script>
+  <!-- <script src="./js/libs.min.js" charset="utf-8"></script> -->
+  <!-- <script src="./libs/mask/jquery.maskedinput.js" charset="utf-8"></script> -->
+  <!-- <script src="./js/mask.js" charset="utf-8"></script> -->
+  <!-- <script src="./libs/slick/slick.min.js" charset="utf-8"></script> -->
+  <!-- <script src="./js/slider.js" charset="utf-8"></script> -->
+  <!-- <script src="./js/form.js" charset="utf-8"></script> -->
+  <!-- <script src="./js/google-map.js" charset="utf-8"></script> -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDT2fpxOrjQ6n_pStYSP4R6IHRgCqW3rPA&callback=initMap" async defer></script>
-  <script src="./js/google-map.js" charset="utf-8"></script>
-  <script src="js/main.js" charset="utf-8"></script>
+  <script src="js/main.concat.js" charset="utf-8"></script>
+  <!-- <script src="js/main.js" charset="utf-8"></script> -->
 
 </body>
 </html>

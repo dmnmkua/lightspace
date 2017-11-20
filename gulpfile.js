@@ -29,24 +29,46 @@ gulp.task('browser-sync', function() { // Создаем таск browser-sync
     });
 });
 
-gulp.task('scripts', function() {
+// gulp.task('scriptsLibs', function() {
+//   return gulp.src([
+//     'app/libs/jquery/dist/jquery.min.js',
+//     'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
+//     'app/libs/mask/jquery.maskedinput.js',
+//     'app/libs/slick/slick.min.js'
+//   ])
+//     .pipe(concat('libs.min.js'))
+//     .pipe(uglify())
+//     .pipe(gulp.dest('app/js'))
+// })
+
+gulp.task('scriptsMain', function() {
   return gulp.src([
     'app/libs/jquery/dist/jquery.min.js',
-    'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js'
+    'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
+    'app/libs/mask/jquery.maskedinput.js',
+    'app/libs/slick/slick.min.js',
+    'app/js/form.js',
+    'app/js/google-map.js',
+    'app/js/mask.js',
+    'app/js/slider.js',
+    'app/js/main.js'
   ])
-    .pipe(concat('libs.min.js'))
+    .pipe(concat('main.concat.js'))
+    .pipe(babel({
+      presets: ['env']
+    }))
     .pipe(uglify())
     .pipe(gulp.dest('app/js'))
 })
 
 gulp.task('babel', function() {
-  gulp.src('app/js/main.js')
+  gulp.src('app/js/main.concat.js')
     .pipe(babel({
       presets: ['env']
     }))
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('dist/js'))
+    .pipe(gulp.dest('app/js'))
 });
 
 gulp.task('minify-html', function() {
@@ -65,7 +87,7 @@ gulp.task('css-libs', ['sass'], function() {
     .pipe(gulp.dest('app/css'))
 })
 
-gulp.task('watch', ['browser-sync', 'css-libs', 'scripts'], function() {
+gulp.task('watch', ['browser-sync', 'css-libs', 'scriptsMain'], function() {
     gulp.watch('app/sass/**/*.scss', ['sass']);
     gulp.watch('app/**/*.html', browserSync.reload);
     gulp.watch('app/js/**/*.js', browserSync.reload);
@@ -94,6 +116,11 @@ gulp.task('build', ['clean', 'img', 'minify-html', 'sass', 'babel', 'scripts'], 
     'app/css/main.min.css'
   ])
   .pipe(gulp.dest('dist/css'))
+
+  let buildJs = gulp.src([
+    'app/js/main.min.js'
+  ])
+  .pipe(gulp.dest('dist/js'))
 
   let buildFonts = gulp.src('app/fonts/**/*')
   .pipe(gulp.dest('dist/fonts'))

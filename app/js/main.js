@@ -2,7 +2,7 @@
 window.addEventListener('DOMContentLoaded', () => {
 
   function OpenMenu() {
-    
+
     this.btnMenu = document.querySelector('#btn-menu');
     this.nav = document.querySelector('.nav');
     this.navList = document.querySelector('.nav__list');
@@ -23,6 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.section-third__solution-wrap');
     this.mobileMenu = document.querySelector('.header-sub__list--mobile');
 
+    // Value select solution tab in mobile menu
     viewMenuItem_ = () => {
       for(let i =0; i < this.subBtnMobile.length; i++) {
         if(this.subBtnMobile[i].classList.contains('header-sub__btn--mobile-active')) {
@@ -30,26 +31,35 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       }
     }
-
     viewMenuItem_();
 
+    //  Reset after click tab item
     reset_ = () => {
-      // var id = $('.solution__list-wrap--show').attr('id');
-      // $(id + ' > ul').slick('unslick');
-      for(let i = 0; i < this.listWrap.length; i++) {
-        if(this.listWrap[i].classList.contains('solution__list-wrap--show')) {
-          this.listWrap[i].classList.remove('solution__list-wrap--show');
-        }
+
+      for(let i = 0; i < this.solutionsItemsMenu.length; i++) {
+
         if(this.solutionsItemsMenu[i].children[0].classList.contains('header-sub__btn--active')) {
-          this.solutionsItemsMenu[i].children[0].classList.remove('header-sub__btn--active')
+          this.solutionsItemsMenu[i].children[0].classList.remove('header-sub__btn--active');
         }
+
         if(this.subBtnMobile[i].classList.contains('header-sub__btn--mobile-active')) {
-          this.subBtnMobile[i].classList.remove('header-sub__btn--mobile-active')
+          this.subBtnMobile[i].classList.remove('header-sub__btn--mobile-active');
         }
       }
     }
 
+    // init slick slider with data Home
+    initSlider_ = () => {
+      $('.solutions__list').slick({
+        adaptiveHeight: true,
+        arrows: true,
+        infinite: false,
+        prevArrow: $('.solutions__btn--prev'),
+        nextArrow: $('.solutions__btn--next')
+      }).slick('slickFilter', '.home');
+    }
 
+    //  Events
     event_ = () => {
 
       //  Open menu on tap button
@@ -91,35 +101,36 @@ window.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         event.stopImmediatePropagation();
 
-        // reset_();
-        let activeTab = event.target.dataset.tab;
-        // let activeList = document.querySelector(activeTab);
-        // activeList.classList.add('solution__list-wrap--show');
-        
-        console.log(activeTab);
-        switch (activeTab) {
-          case '.home':
-          case '.office':
-          case '.horeca':
-          case '.trade':
-          case '.prom':
-            $('.solutions__list').slick('slickUnfilter');
-            $('.solutions__list').slick('slickFilter', activeTab);
-            break;
-          default:
-            $('.solutions__list').slick('slickFilter', '.home');
-            break;
+        if(event.target.tagName === "BUTTON") {
+          reset_();
+          let activeTab = event.target.dataset.tab;
+
+          event.target.classList.add('header-sub__btn--active');
+
+          console.log(activeTab);
+          switch (activeTab) {
+            case '.home':
+            case '.office':
+            case '.horeca':
+            case '.trade':
+            case '.prom':
+              $('.solutions__list').slick('slickUnfilter');
+              $('.solutions__list').slick('slickFilter', activeTab);
+              break;
+            default:
+              $('.solutions__list').slick('slickFilter', '.home');
+              break;
+          }
+          console.log($(activeTab).length);
+          $('.solutions__list').slick('slickGoTo', 0);
         }
-        console.log($(activeTab).length);
-        $('.solutions__list').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-          var i = (currentSlide ? currentSlide : 0) + 1;
-          console.log(i + '/' + slick.slideCount);
-        })
-        
-        
+      });
 
-
-        // event.target.classList.add('header-sub__btn--active');
+      //  create count sliders
+      $('.solutions__list').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+        var i = (currentSlide ? currentSlide : 0) + 1;
+        console.log(i + '/' + slick.slideCount);
+        document.querySelector('.slider__count').innerHTML = (i + '|' + slick.slideCount);
       });
 
       //  Mobile menu slider open
@@ -129,35 +140,45 @@ window.addEventListener('DOMContentLoaded', () => {
       });
 
       //  select mobile menu item
-      this.mobileMenu.addEventListener('click', e => {
-        if(e.target.tagName === "A") {
-          e.preventDefault();
-          e.stopImmediatePropagation();
+      this.mobileMenu.addEventListener('click', ev => {
 
-          // reset_();
+        if(ev.target.tagName === "A") {
 
-          let activeTab = e.target.getAttribute('href');
-          let activeList = document.querySelector(activeTab);
-          activeList.classList.add('solution__list-wrap--show');
-          e.target.classList.add('header-sub__btn--mobile-active');
-          this.mobileMenu.classList.toggle('header-sub__list--mobile-show');
+          ev.preventDefault();
+          ev.stopImmediatePropagation();
+
+          reset_();
+
+          let activeTab = ev.target.dataset.tab;
+
+          ev.target.classList.add('header-sub__btn--mobile-active');
           viewMenuItem_();
-          e.target.classList.add('header-sub__btn--active');
+          console.log(activeTab);
+          switch (activeTab) {
+            case '.home':
+            case '.office':
+            case '.horeca':
+            case '.trade':
+            case '.prom':
+              $('.solutions__list').slick('slickUnfilter');
+              $('.solutions__list').slick('slickFilter', activeTab);
+              break;
+            default:
+              $('.solutions__list').slick('slickFilter', '.home');
+              break;
+          }
+          console.log($(activeTab).length);
+          $('.solutions__list').slick('slickGoTo', 0);
         }
+
+        this.mobileMenu.classList.toggle('header-sub__list--mobile-show');
       });
     }
 
     init_ = () => {
       event_();
-      $('.solutions__list').slick({
-        adaptiveHeight: true,
-        arrows: true,
-        infinite: false,
-        prevArrow: $('.solutions__btn--prev'),
-        nextArrow: $('.solutions__btn--next')
-      })
+      initSlider_();
     }
-
     init_();
   }
 
@@ -175,4 +196,4 @@ window.addEventListener('DOMContentLoaded', () => {
      });
      return false;
   });
-})
+});
