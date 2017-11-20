@@ -33,14 +33,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     viewMenuItem_();
 
-    $('#home > ul').slick ({
-      adaptiveHeight: true,
-      arrows: true,
-      prevArrow: $('.solutions__btn--prev'),
-      nextArrow: $('.solutions__btn--next')
-    })
-
     reset_ = () => {
+      // var id = $('.solution__list-wrap--show').attr('id');
+      // $(id + ' > ul').slick('unslick');
       for(let i = 0; i < this.listWrap.length; i++) {
         if(this.listWrap[i].classList.contains('solution__list-wrap--show')) {
           this.listWrap[i].classList.remove('solution__list-wrap--show');
@@ -82,7 +77,6 @@ window.addEventListener('DOMContentLoaded', () => {
         let topWindowPos = window.pageYOffset;
         let solutionsPos = solutions.offsetTop;
         let solutionsHeight = solutions.offsetHeight;
-        // console.log(topWindowPos, solutionsPos, solutionsHeight);
 
         if(topWindowPos >= solutionsPos && topWindowPos < solutionsPos + solutionsHeight / 2) {
           this.headerSub.classList.add('header-sub--open');
@@ -93,22 +87,39 @@ window.addEventListener('DOMContentLoaded', () => {
       });
 
       //  Toggle sliders
-      this.solutionsMenu.addEventListener('click', e => {
-        e.preventDefault();
-        e.stopImmediatePropagation();
+      this.solutionsMenu.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
 
-        reset_();
+        // reset_();
+        let activeTab = event.target.dataset.tab;
+        // let activeList = document.querySelector(activeTab);
+        // activeList.classList.add('solution__list-wrap--show');
+        
+        console.log(activeTab);
+        switch (activeTab) {
+          case '.home':
+          case '.office':
+          case '.horeca':
+          case '.trade':
+          case '.prom':
+            $('.solutions__list').slick('slickUnfilter');
+            $('.solutions__list').slick('slickFilter', activeTab);
+            break;
+          default:
+            $('.solutions__list').slick('slickFilter', '.home');
+            break;
+        }
+        console.log($(activeTab).length);
+        $('.solutions__list').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+          var i = (currentSlide ? currentSlide : 0) + 1;
+          console.log(i + '/' + slick.slideCount);
+        })
+        
+        
 
-        let activeTab = e.target.getAttribute('href');
-        let activeList = document.querySelector(activeTab);
-        activeList.classList.add('solution__list-wrap--show');
-        $(activeTab + " > ul").slick({
-          adaptiveHeight: true,
-          arrows: true,
-          prevArrow: $('.solutions__btn--prev'),
-          nextArrow: $('.solutions__btn--next')
-        });
-        e.target.classList.add('header-sub__btn--active');
+
+        // event.target.classList.add('header-sub__btn--active');
       });
 
       //  Mobile menu slider open
@@ -123,7 +134,7 @@ window.addEventListener('DOMContentLoaded', () => {
           e.preventDefault();
           e.stopImmediatePropagation();
 
-          reset_();
+          // reset_();
 
           let activeTab = e.target.getAttribute('href');
           let activeList = document.querySelector(activeTab);
@@ -131,12 +142,6 @@ window.addEventListener('DOMContentLoaded', () => {
           e.target.classList.add('header-sub__btn--mobile-active');
           this.mobileMenu.classList.toggle('header-sub__list--mobile-show');
           viewMenuItem_();
-          $(activeTab + " > ul").slick({
-            adaptiveHeight: true,
-            arrows: true,
-            prevArrow: $('.solutions__btn--prev'),
-            nextArrow: $('.solutions__btn--next')
-          });
           e.target.classList.add('header-sub__btn--active');
         }
       });
@@ -144,6 +149,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     init_ = () => {
       event_();
+      $('.solutions__list').slick({
+        adaptiveHeight: true,
+        arrows: true,
+        infinite: false,
+        prevArrow: $('.solutions__btn--prev'),
+        nextArrow: $('.solutions__btn--next')
+      })
     }
 
     init_();
