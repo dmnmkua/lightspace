@@ -82,6 +82,9 @@
 .solutions__item {
   padding: 0;
   margin: 0;
+  height: 100vh;
+  background: center center no-repeat;
+  background-size: cover;
 }
 
 .solutions__img {
@@ -289,7 +292,7 @@
 .slider__list-items-wrap--show {
   padding: 15px 40px;
   height: auto;
-  max-height: 20vh;
+  max-height: 30vh;
 }
 
 .slider__item {
