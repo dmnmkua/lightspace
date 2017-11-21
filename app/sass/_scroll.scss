@@ -1,31 +1,41 @@
-::-webkit-scrollbar-button {
+body::-webkit-scrollbar-button,
+.slider__list-items-wrap::-webkit-scrollbar-button {
 background-image:url('');
 background-repeat:no-repeat;
 width:5px;
 height:0px
 }
 
-::-webkit-scrollbar-track {
-background-color:rgba(0, 0, 0, .2)
+body::-webkit-scrollbar-track,
+.slider__list-items-wrap::-webkit-scrollbar-track {
+background-color:rgba(0, 0, 0, .7)
 }
 
-::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb,
+.slider__list-items-wrap::-webkit-scrollbar-thumb {
 -webkit-border-radius: 0px;
 border-radius: 0px;
-background-color:#ddd;
+background-color:$main-color;
 }
 
-::-webkit-scrollbar-thumb:hover{
-background-color:#ddd;
+body::-webkit-scrollbar-thumb:hover,
+.slider__list-items-wrap::-webkit-scrollbar-thumb:hover{
+background-color:rgba(255, 204, 0, .8);
 }
 
-::-webkit-resizer{
+body::-webkit-resizer,
+.slider__list-items-wrap::-webkit-resizer{
 background-image:url('');
 background-repeat:no-repeat;
 width:4px;
 height:0px
 }
 
-::-webkit-scrollbar{
+body::-webkit-scrollbar,
+.slider__list-items-wrap::-webkit-scrollbar{
 width: 4px;
+}
+
+.nav::-webkit-scrollbar {
+  width: 0;
 }

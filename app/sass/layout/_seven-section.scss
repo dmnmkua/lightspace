@@ -83,6 +83,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 50%;
 }
 
 .address__item {
@@ -141,7 +142,9 @@
 }
 
 .address__item-img--right {
-  transform: translateX(5px);
+  position: relative;
+  left: 5px;
+  z-index: -9;
 }
 
 .footer {
