@@ -107,7 +107,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
           event.target.classList.add('header-sub__btn--active');
 
-          console.log(activeTab);
+          // console.log(activeTab);
           switch (activeTab) {
             case '.home':
             case '.office':
@@ -121,7 +121,7 @@ window.addEventListener('DOMContentLoaded', () => {
               $('.solutions__list').slick('slickFilter', '.home');
               break;
           }
-          console.log($(activeTab).length);
+          // console.log($(activeTab).length);
           $('.solutions__list').slick('slickGoTo', 0);
         }
       });
@@ -129,7 +129,7 @@ window.addEventListener('DOMContentLoaded', () => {
       //  create count sliders
       $('.solutions__list').on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
         var i = (currentSlide ? currentSlide : 0) + 1;
-        console.log(i + '/' + slick.slideCount);
+        // console.log(i + '/' + slick.slideCount);
         document.querySelector('.slider__count').innerHTML = (i + '|' + slick.slideCount);
       });
 
@@ -153,7 +153,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
           ev.target.classList.add('header-sub__btn--mobile-active');
           viewMenuItem_();
-          console.log(activeTab);
+          // console.log(activeTab);
           switch (activeTab) {
             case '.home':
             case '.office':
@@ -167,7 +167,7 @@ window.addEventListener('DOMContentLoaded', () => {
               $('.solutions__list').slick('slickFilter', '.home');
               break;
           }
-          console.log($(activeTab).length);
+          // console.log($(activeTab).length);
           $('.solutions__list').slick('slickGoTo', 0);
         }
 
@@ -185,7 +185,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let openMenu = new OpenMenu();
 
   //  Smooth Scroll
-  $(".nav__link, .logo-block__link").click(function() {
+  $(".nav__link, .logo-block__link, .callback__link").click(function() {
     openMenu.nav.classList.remove('nav--open');
     openMenu.overlay.classList.remove('overlay--show');
      $("html, body").animate({
