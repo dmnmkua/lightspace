@@ -90,7 +90,7 @@
 
 .settings-slider {
   position: absolute;
-  z-index: 99;
+  z-index: 9;
   bottom: 0;
   left: 0;
   right: 0;
@@ -98,7 +98,7 @@
 
   @media screen and (max-width: $mobile) {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 }
 
@@ -115,5 +115,39 @@
   &:hover,
   &:active {
     color: $main-color;
+  }
+}
+
+.slick-dots {
+  transform: translateY(px);
+  width: auto;
+  // position: relative;
+  transform: translate(-50%, 18px);
+  left: 50%;
+
+  li:not(:last-child) {
+    margin-right: 21px;
+  }
+
+  button {
+    width: 11px !important;
+    height: 11px !important;
+    background: #fff !important;
+    border-radius: 50%;
+    font-size: 0;
+
+    &:before {
+      content: "";
+      display: none;
+      height: 0;
+      width: 0;
+    }
+  }
+}
+
+.slick-active {
+
+  button {
+    background: $main-color !important;
   }
 }

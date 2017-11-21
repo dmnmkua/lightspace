@@ -221,10 +221,7 @@
   transition: .3s transform ease-in-out;
   will-change: transform;
   overflow-y: scroll;
-  -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
-
-  &:-webkit-scrollbar { width: 0 !important }
 
   &--open {
     transform: translateX(0);

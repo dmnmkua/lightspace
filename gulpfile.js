@@ -16,6 +16,8 @@ const gulp = require('gulp'),
 gulp.task('sass', function() {
   return gulp.src('app/sass/main.scss')
     .pipe(sass())
+    .pipe(cssnano())
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('app/css'))
     .pipe(browserSync.reload({stream: true}))
 })
@@ -81,14 +83,14 @@ gulp.task('minify-html', function() {
     .pipe(gulp.dest('dist'))
 })
 
-gulp.task('css-libs', ['sass'], function() {
-  return gulp.src('app/css/main.css')
-    .pipe(cssnano())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('app/css'))
-})
+// gulp.task('css-libs', ['sass'], function() {
+//   return gulp.src('app/css/main.css')
+//     .pipe(cssnano())
+//     .pipe(rename({suffix: '.min'}))
+//     .pipe(gulp.dest('app/css'))
+// })
 
-gulp.task('watch', ['browser-sync', 'css-libs', 'scriptsMain'], function() {
+gulp.task('watch', ['browser-sync', 'sass', 'scriptsMain'], function() {
     gulp.watch('app/sass/**/*.scss', ['sass']);
     gulp.watch('app/**/*.html', browserSync.reload);
     gulp.watch('app/js/**/*.js', browserSync.reload);

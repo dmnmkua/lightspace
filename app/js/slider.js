@@ -12,6 +12,8 @@ $(document).ready(function(){
           slidesToScroll: 1,
           infinite: true,
           dots: true,
+          appendDots: $('.dots-block'),
+          dotsClass: 'dots-block',
           accessibility: true,
           arrows: true,
           prevArrow: $('.prev-arrow'),
