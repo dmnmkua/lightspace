@@ -49,7 +49,6 @@ gulp.task('scriptsMain', function() {
     'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
     'app/libs/mask/jquery.maskedinput.js',
     'app/libs/slick/slick.min.js',
-    'app/js/gallery.js',
     'app/js/form.js',
     'app/js/google-map.js',
     'app/js/mask.js',
