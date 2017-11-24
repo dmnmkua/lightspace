@@ -74,14 +74,14 @@ gulp.task('scriptsMain', function() {
 //     .pipe(gulp.dest('app/js'))
 // });
 
-gulp.task('minify-html', function() {
-  let opts = {comments: true, spare: true};
-
-  gulp.src('app/*.html')
-    .pipe(minifyHtml(opts))
-    // .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('dist'))
-})
+// gulp.task('minify-html', function() {
+//   let opts = {comments: true, spare: true};
+//
+//   gulp.src('app/*.html')
+//     .pipe(minifyHtml(opts))
+//     // .pipe(rename({suffix: '.min'}))
+//     .pipe(gulp.dest('dist'))
+// })
 
 // gulp.task('css-libs', ['sass'], function() {
 //   return gulp.src('app/css/main.css')
@@ -113,7 +113,7 @@ gulp.task('img', function() {
     .pipe(gulp.dest('dist/img'))
 });
 
-gulp.task('build', ['clean', 'img', 'minify-html', 'sass', 'scriptsMain'], function() {
+gulp.task('build', ['clean', 'img', 'sass', 'scriptsMain'], function() {
 
   let buildCss = gulp.src([
     'app/css/**/*'
@@ -124,6 +124,11 @@ gulp.task('build', ['clean', 'img', 'minify-html', 'sass', 'scriptsMain'], funct
     'app/js/main.concat.js'
   ])
   .pipe(gulp.dest('dist/js'))
+
+  let buildHtml = gulp.src([
+    'app/index.html'
+  ])
+  .pipe(gulp.dest('dist'))
 
   let buildFonts = gulp.src('app/fonts/**/*')
   .pipe(gulp.dest('dist/fonts'))
