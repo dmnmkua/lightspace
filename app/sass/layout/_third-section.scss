@@ -287,6 +287,8 @@
   transition: all .1s;
   overflow-y: scroll;
   background: rgba(0, 0, 0, .7);
+  position: relative;
+  z-index: 99;
 }
 
 .slider__list-items-wrap--show {

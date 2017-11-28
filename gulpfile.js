@@ -93,7 +93,7 @@ gulp.task('scriptsMain', function() {
 gulp.task('watch', ['browser-sync', 'sass', 'scriptsMain'], function() {
     gulp.watch('app/sass/**/*.scss', ['sass']);
     gulp.watch('app/**/*.html', browserSync.reload);
-    gulp.watch('app/js/**/*.js', browserSync.reload);
+    gulp.watch('app/js/**/*.js', ['scriptsMain'], browserSync.reload);
 })
 
 gulp.task('clean', function() {

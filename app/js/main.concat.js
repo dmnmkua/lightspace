@@ -689,7 +689,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }).slick('slickFilter', '.home');
 
       for(let i = 0; i < $('.slick-track').children().length; i++) {
-        createSliderItem_(`Проект ${i + 1}`, i + 1);
+        createSliderItem_(document.querySelectorAll('.solutions__item')[i].getAttribute('data-location'), i + 1);
       }
     }
 
@@ -769,7 +769,7 @@ window.addEventListener('DOMContentLoaded', () => {
         var loc = $('.slick-current').attr('data-location');
         // console.log(loc);
         $('.slider__location').html(loc);
-        $('.slider__select').html(`Проект ${i}`)
+        $('.slider__select').html(document.querySelectorAll('.solutions__item')[i].getAttribute('data-location'))
       });
 
       //  Mobile menu slider open
@@ -804,7 +804,7 @@ window.addEventListener('DOMContentLoaded', () => {
               console.log($('.slick-track').children().length - 7);
               this.sliderList.innerHTML = '';
               for(let i = 0; i < $('.slick-track').children().length - 7; i++) {
-                createSliderItem_(`Проект ${i + 1}`, i + 1);
+                createSliderItem_(document.querySelectorAll('.solutions__item')[i].getAttribute('data-location'), i + 1);
               }
               break;
             default:
