@@ -769,7 +769,7 @@ window.addEventListener('DOMContentLoaded', () => {
         var loc = $('.slick-current').attr('data-location');
         // console.log(loc);
         $('.slider__location').html(loc);
-        $('.slider__select').html(document.querySelectorAll('.solutions__item')[i].getAttribute('data-location'))
+        $('.slider__select').html(document.querySelectorAll('.solutions__item')[i - 1].getAttribute('data-location'))
       });
 
       //  Mobile menu slider open
